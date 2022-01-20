@@ -1,5 +1,4 @@
 :global data "name,disabled,state";
-:global tmp;
 
 foreach id in=[/routing bgp peer find] do={
     :global name [/routing bgp peer get value-name=name $id];
@@ -11,13 +10,9 @@ foreach id in=[/routing bgp peer find] do={
         :if (state = "opensent") do={:set state 4;}
         :if (state = "openconfirm") do={:set state 5;}; 
         :if (state = "established") do={:set state 6;}
-        :if (disabled = true) do={:set state 1;}
-
-    :if ($disabled) do={:global state "idle"};
-
-    :set $tmp ($name . "," . $disabled . "," . $state);
-    
-    set $data ($data . "|" . $tmp);
+        :if (disabled) do={:set state 1;}
+        
+    :set $data ($data . "|" . $name . "," . $disabled . "," . $state);
 };
 
 /snmp send-trap oid=1.3.6.444.444 type=string value="$data"
