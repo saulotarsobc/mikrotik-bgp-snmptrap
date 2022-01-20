@@ -13,4 +13,4 @@ foreach id in=[/routing bgp peer find] do={
     set $data ($data . "|" . $tmp);
 };
 
-/snmp send-trap oid=1.2.2.1.2 type=string value="$data"
+/snmp send-trap oid=1.3.6.444.444 type=string value="$data"

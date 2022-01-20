@@ -2,7 +2,11 @@
 
 ## Monitoramento de sessões bgp na Mikrotik com snmp trap
 
-### 🏗️ Em construção
+### Apoio
+
+* [Webinars JLCP - Configurando SNMPTRAP no Zabbix com Robert Silva](https://youtu.be/t9REGzRneGQ)
+  * [Robert Silva - robertsilvatech](https://github.com/robertsilvatech)
+* [SNMP TRAP com Zabbix e Mikrotik](https://youtu.be/-lWz4pZxems)
 
 ```sh
 apt install snmptrap libsnmp-perl perl libxml-simple-perl
