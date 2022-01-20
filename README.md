@@ -23,6 +23,7 @@ nano /etc/snmp/snmptrapd.conf
 ```
 
 > authCommunity log,execute,net <COMINUDADE_SNMP>
+>
 > perl do "/etc/zabbix/zabbix_trap_receiver.pl";
 
 ![-](img/snmptrapconfig.png)
