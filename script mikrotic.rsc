@@ -36,8 +36,6 @@ foreach id in=[/routing bgp peer find] do={
         :set uptimeseconds [($weeks*86400*7+$days*86400+$hours*3600+$minutes*60+$seconds)];
 
     :set $data ($data."|".$name.",".$disabled.",".$state.",".$remoteaddress.",".$remoteas.",".$prefix.",".$uptimeseconds);
-    
-    :delay 1s;
 
 };
 /snmp send-trap oid=1.3.6.444.444 type=string value="$data"
