@@ -47,7 +47,7 @@ nano /etc/snmp/snmptrapd.conf
 >
 > perl do "/etc/zabbix/zabbix_trap_receiver.pl";
 
-![-](img/snmptrapconfig.png)
+![-](/contents/img/snmptrapconfig.png)
 
 ---
 
@@ -68,18 +68,18 @@ service snmptrapd restart
 tail -f /tmp/snmptrap.tmp
 ```
 
-![-](img/tail.png)
+![-](/contents/img/tail.png)
 
 ---
 
 ## ZABBIX TEMPLATE
 
-### [Baixe o template aqui](/MIkrotik%20BGP%20-%20SNMPTRAP.yaml)
+### [Baixe o template aqui](/contents/MIkrotik%20BGP%20-%20SNMPTRAP.yaml)
 
-![-](img/values.png)
+![-](/contents/img/values.png)
 
 ---
 
 ## SCRIPT MIKROTIK
 
-### [Baixe o script aqui](/script_mikrotic.rsc)
+### [Baixe o script aqui](/contents/script_mikrotic.rsc)
