@@ -6,7 +6,7 @@
 
 ---
 
-### Apoio
+### Referência
 
 * [Webinars JLCP - Configurando SNMPTRAP no Zabbix com Robert Silva](https://youtu.be/t9REGzRneGQ)
   * [Robert Silva - robertsilvatech](https://github.com/robertsilvatech)
