@@ -2,6 +2,8 @@
 
 ## Monitoramento de sessões bgp na Mikrotik com snmp trap
 
+___
+
 ### Apoio
 
 * [Webinars JLCP - Configurando SNMPTRAP no Zabbix com Robert Silva](https://youtu.be/t9REGzRneGQ)
@@ -9,14 +11,23 @@
 * [SNMP TRAP com Zabbix e Mikrotik](https://youtu.be/-lWz4pZxems)
 * [Remontti - Monitorando no Zabbix as sessões BGP do RouterOS v6 (Mikrotik) via SNMP](https://blog.remontti.com.br/6175)
 
+___
+
 ```sh
 apt install snmptrap libsnmp-perl perl libxml-simple-perl
 cd /etc/zabbix
 wget -O https://raw.githubusercontent.com/prelegalwonder/zabbix/master/misc/snmptrap/zabbix_trap_receiver.pl
+```
+
+___
+
+```sh
 nano zabbix_trap_receiver.pl
 ```
 
 > $SNMPTrapperFile = '/tmp/snmptrap.tmp';
+
+___
 
 ```sh
 nano /etc/zabbix/zabbix_server.conf
@@ -25,6 +36,8 @@ nano /etc/zabbix/zabbix_server.conf
 > SNMPTrapperFile=/tmp/snmptrap.tmp
 >
 > StartSNMPTrapper=1
+
+___
 
 ```sh
 nano /etc/snmp/snmptrapd.conf
@@ -36,10 +49,14 @@ nano /etc/snmp/snmptrapd.conf
 
 ![-](img/snmptrapconfig.png)
 
+___
+
 ```sh
 service zabbix-server restart
 service snmptrapd restart
 ```
+
+___
 
 ### Na sua mikrotik envie um trap para testar se ta tudo funcionando
 
@@ -52,3 +69,5 @@ tail -f /tmp/snmptrap.tmp
 ```
 
 ![-](img/tail.png)
+
+___
