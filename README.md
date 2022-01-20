@@ -71,3 +71,9 @@ tail -f /tmp/snmptrap.tmp
 ![-](img/tail.png)
 
 ---
+
+## ZABBIX TEMPLATE
+
+### [Baixe o template aqui](/MIkrotik%20BGP%20-%20SNMPTRAP.yaml)
+
+![-](img/values.png)

@@ -1,0 +1,172 @@
+zabbix_export:
+  version: '5.4'
+  date: '2022-01-20T14:15:08Z'
+  groups:
+    -
+      uuid: 9a617e288a804ea292040a77d26d2102
+      name: 'MIkrotik BGP - SNMPTRAP'
+  templates:
+    -
+      uuid: 2d3345d961454298bbd064ac8ebc8e6f
+      template: 'MIkrotik BGP - SNMPTRAP'
+      name: 'MIkrotik BGP - SNMPTRAP'
+      groups:
+        -
+          name: 'MIkrotik BGP - SNMPTRAP'
+      items:
+        -
+          uuid: 12ecd8647f7f4df2bcec108523d14d3f
+          name: 'bgp TRAP'
+          type: SNMP_TRAP
+          key: 'snmptrap[".3.6.444.444"]'
+          delay: '0'
+          history: 1d
+          trends: '0'
+          value_type: TEXT
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - 'value=STRING:\s\"(.*)\"$'
+                - \1
+            -
+              type: STR_REPLACE
+              parameters:
+                - '|'
+                - \n
+            -
+              type: CSV_TO_JSON
+              parameters:
+                - ''
+                - ''
+                - '1'
+      discovery_rules:
+        -
+          uuid: ebd232fbde734e23bb5715a08555c04a
+          name: 'bgp DISCOVERY'
+          type: DEPENDENT
+          key: bgp.discovery
+          delay: '0'
+          filter:
+            conditions:
+              -
+                macro: '{#DISABLED}'
+                value: ^false$
+                formulaid: A
+          lifetime: 0d
+          item_prototypes:
+            -
+              uuid: 64d252bf4b014e7a87ef959695090305
+              name: '{#NAME} - AS{#REMOTEAS} - Prefix'
+              type: DEPENDENT
+              key: 'bgp.prefix[{#NAME}]'
+              delay: '0'
+              history: 1w
+              trends: 1w
+              units: prefixes
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$[?(@.name== ''{#NAME}'')].prefix.first()'
+                  error_handler: CUSTOM_VALUE
+                  error_handler_params: '0'
+              master_item:
+                key: 'snmptrap[".3.6.444.444"]'
+              tags:
+                -
+                  tag: bgp
+                  value: prefix
+            -
+              uuid: 552b94e059254478b37b658d4dc2c39a
+              name: '{#NAME} - AS{#REMOTEAS} - State'
+              type: DEPENDENT
+              key: 'bgp.state[{#NAME}]'
+              delay: '0'
+              history: 1w
+              trends: 1w
+              valuemap:
+                name: 'bgp state'
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$[?(@.name== ''{#NAME}'')].state.first()'
+                  error_handler: CUSTOM_VALUE
+                  error_handler_params: '0'
+              master_item:
+                key: 'snmptrap[".3.6.444.444"]'
+              tags:
+                -
+                  tag: bgp
+                  value: state
+              trigger_prototypes:
+                -
+                  uuid: ea9c5db05e934f5185343452be9d2171
+                  expression: 'last(/MIkrotik BGP - SNMPTRAP/bgp.state[{#NAME}])<>6'
+                  recovery_mode: RECOVERY_EXPRESSION
+                  recovery_expression: 'last(/MIkrotik BGP - SNMPTRAP/bgp.state[{#NAME}])=6'
+                  name: '{#NAME} - BGP State'
+                  opdata: 'not Stablished'
+                  priority: HIGH
+                  manual_close: 'YES'
+            -
+              uuid: f730c18891f141d19276a896af426f5d
+              name: '{#NAME} - AS{#REMOTEAS} - Uptime'
+              type: DEPENDENT
+              key: 'bgp.uptime[{#NAME}]'
+              delay: '0'
+              history: 1w
+              trends: 1w
+              units: uptime
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$[?(@.name== ''{#NAME}'')].uptime.first()'
+                  error_handler: CUSTOM_VALUE
+                  error_handler_params: '0'
+              master_item:
+                key: 'snmptrap[".3.6.444.444"]'
+              tags:
+                -
+                  tag: bgp
+                  value: uptime
+          master_item:
+            key: 'snmptrap[".3.6.444.444"]'
+          lld_macro_paths:
+            -
+              lld_macro: '{#DISABLED}'
+              path: $..disabled.first()
+            -
+              lld_macro: '{#NAME}'
+              path: $..name.first()
+            -
+              lld_macro: '{#REMOTEAS}'
+              path: $..remoteas.first()
+      valuemaps:
+        -
+          uuid: f0c776c35477486f9b606a9cc1d63fb0
+          name: 'bgp state'
+          mappings:
+            -
+              value: '0'
+              newvalue: unknown
+            -
+              value: '1'
+              newvalue: idle
+            -
+              value: '2'
+              newvalue: connect
+            -
+              value: '3'
+              newvalue: active
+            -
+              value: '4'
+              newvalue: opensent
+            -
+              value: '5'
+              newvalue: openconfirm
+            -
+              value: '6'
+              newvalue: established
