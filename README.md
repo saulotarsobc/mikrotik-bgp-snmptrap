@@ -6,12 +6,14 @@
 
 ---
 
-### Referência
+### Referências
 
-* [Robert Silva JLCP - Configurando SNMPTRAP no Zabbix...](https://youtu.be/t9REGzRneGQ)
+* [JLCP - Configurando SNMPTRAP no Zabbix](https://youtu.be/t9REGzRneGQ)
   * [Robert Silva - robertsilvatech](https://github.com/robertsilvatech)
-* [Raphael Rodrigues - SNMP TRAP com Zabbix e Mikrotik](https://youtu.be/-lWz4pZxems)
-* [R Remontti - Monitorando no Zabbix as sessões BGP do RouterOS v6 (Mikrotik) via SNMP](https://blog.remontti.com.br/6175)
+* [SNMP TRAP com Zabbix e Mikrotik](https://youtu.be/-lWz4pZxems)
+  * [Raphael Rodrigues](https://www.youtube.com/channel/UC08TEQv0yBMl5433ZekhDsQ)
+* [Monitorando no Zabbix as sessões BGP do RouterOS v6 (Mikrotik) via SNMP](https://blog.remontti.com.br/6175)
+  * [Rudimar Remontti](https://github.com/remontti)
 
 ---
 
