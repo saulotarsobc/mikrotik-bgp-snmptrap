@@ -1,6 +1,6 @@
 zabbix_export:
   version: '5.4'
-  date: '2022-01-20T14:15:08Z'
+  date: '2022-01-20T14:22:49Z'
   groups:
     -
       uuid: 9a617e288a804ea292040a77d26d2102
@@ -53,7 +53,6 @@ zabbix_export:
                 macro: '{#DISABLED}'
                 value: ^false$
                 formulaid: A
-          lifetime: 0d
           item_prototypes:
             -
               uuid: 64d252bf4b014e7a87ef959695090305
