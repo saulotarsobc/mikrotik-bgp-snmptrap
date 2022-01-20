@@ -23,6 +23,7 @@ nano /etc/zabbix/zabbix_server.conf
 ```
 
 > SNMPTrapperFile=/tmp/snmptrap.tmp
+>
 > StartSNMPTrapper=1
 
 ```sh
