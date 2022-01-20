@@ -83,5 +83,3 @@ tail -f /tmp/snmptrap.tmp
 ## SCRIPT MIKROTIK
 
 ### [Baixe o script aqui](/script_mikrotic.rsc)
-
-![-](img/values.png)
