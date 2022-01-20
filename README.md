@@ -77,3 +77,11 @@ tail -f /tmp/snmptrap.tmp
 ### [Baixe o template aqui](/MIkrotik%20BGP%20-%20SNMPTRAP.yaml)
 
 ![-](img/values.png)
+
+---
+
+## SCRIPT MIKROTIK
+
+### [Baixe o script aqui](/script_mikrotic.rsc)
+
+![-](img/values.png)
