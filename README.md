@@ -86,7 +86,7 @@ tail -f /tmp/snmptrap.tmp
 
 ## SCRIPT MIKROTIK
 
-### [Baixe o script aqui](/contents/script_mikrotic.rsc)
+### [Baixe o script aqui](https://raw.githubusercontent.com/saulotarsobc/mikrotik-bgp-snmptrap/main/contents/script_mikrotic.rsc)
 
 ```sh
 :global data "name,disabled,state,remoteaddress,remoteas,prefix,uptime";
